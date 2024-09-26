@@ -50,7 +50,7 @@ function Header() {
                                transition-all duration-200">{name}</a>
                           </li>
                         ); })}
-                    <button className="btn-primary"> Get Started!</button>
+                    <button class="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"> Get Started</button>
                   </ul>
                 </div>
               </div>
