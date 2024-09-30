@@ -2,6 +2,10 @@ import React from 'react';
 import Header from '../components/Home/Header';
 import Footer from '../components/Home/Footer';
 import Image from '../assets/HomeScreen.png';
+import EarlyD from '../assets/Early Detection.jpg';
+import ScientificallyP from '../assets/Scientifically Proven.png';
+import EasyToUse from '../assets/EasyToUse.avif';
+
 
 function Hero() {
     return (
@@ -48,21 +52,24 @@ function Hero() {
     <section className="py-16 bg-white" id="services">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
+              <img src={EarlyD} alt="Early Detection Image" className="w-full max-w-[300px] ml-14"/>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Early Detection</h2>
                   <p className="text-gray-600">
                     Our application can help identify early signs of cognitive decline, allowing for timely intervention.
                   </p>
             </div>
             <div className="text-center">
+            <img src={ScientificallyP} alt="Scientifically Proven Image" className="w-full max-w-[250px] ml-20 mb-16"/>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Scientifically Backed</h2>
                     <p className="text-gray-600">
                       The application is based on research from leading neuroscientists and healthcare professionals.
                     </p>
             </div>
             <div className="text-center">
+            <img src={EasyToUse} alt="Easy To Use Image" className="w-full max-w-[250px] ml-20 mb-10"/>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Easy to Use</h2>
                     <p className="text-gray-600">
-                        Simple and user-friendly interface for a smooth experience.
+                        Simple and user-friendly interface for a quick and smooth experience.
                     </p>
             </div>
         </div>
