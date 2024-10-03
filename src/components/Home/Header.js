@@ -53,7 +53,11 @@ function Header() {
                                  hover:text-blue-400 py-2 hover:border-b-2 hover:border-blue-400">{name}</a>
                             </li>
                       ); })}
-                    <button class="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"> Get Started</button>
+                    <li>
+                      <Link to="/signup" className="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        Get Started
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>

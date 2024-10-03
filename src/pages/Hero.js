@@ -24,8 +24,8 @@ function Hero() {
                 <h1 class="font-bold tracking-tight text-black sm:text-6xl">Welcome to SmartSympto!</h1>
                 <p class="mt-6 text-lg leading-8 text-black opacity-100">Our cutting-edge app combines AI diagnosis with personalized health insights, focusing on a single key health issue. We use Gemini for an initial diagnosis and ChatGPT for precision checks. Generate detailed reports for your doctor, empowering you to take control of your health like never before!</p>
               <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="#" class="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
-                <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">→</span></a>
+                <a href="/Signup" class="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+                <a href="#about" class="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">→</span></a>
               </div>
             </div>
           </div>
