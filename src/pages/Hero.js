@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Home/Header';
 import Footer from '../components/Home/Footer';
 import Image from '../assets/HomeScreen.png';
+import { Link } from 'react-router-dom';
 import EarlyD from '../assets/Early Detection.jpg';
 import ScientificallyP from '../assets/Scientifically Proven.png';
 import EasyToUse from '../assets/EasyToUse.avif';
@@ -24,7 +25,7 @@ function Hero() {
                 <h1 className="font-bold tracking-tight text-black sm:text-6xl">Welcome to SmartSympto!</h1>
                 <p className="mt-6 text-lg leading-8 text-black opacity-100">Our cutting-edge app combines AI diagnosis with personalized health insights, focusing on a single key health issue. We use Gemini for an initial diagnosis and ChatGPT for precision checks. Generate detailed reports for your doctor, empowering you to take control of your health like never before!</p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <a href="/Signup" className="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+                <Link to="/signup" className="rounded-md bg-blue-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</Link>
                 <a href="#about" className="text-sm font-semibold leading-6 text-gray-900">Learn more <span aria-hidden="true">→</span></a>
               </div>
             </div>

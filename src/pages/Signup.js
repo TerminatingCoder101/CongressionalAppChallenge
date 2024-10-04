@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { useGoogleLogin } from "@react-oauth/google";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleLogo from '../assets/GoogleLogo.webp';
 import HomeLogo from '../assets/HomeLogo.png';
 import SignupImage from '../assets/SignupImage.jpg';
+import { UserAuth } from '../context/AuthContext';
 
 function Signup() {
-  const googleSignup = useGoogleLogin({
-    onSuccess: (response) => console.log("Signup Success:", response),
-    onError: (error) => console.log("Signup Failed:", error),
-  });
+  const { googleSignIn, user } = UserAuth();
+  const navigate = useNavigate();
+
+  const  handleGoogleSignIn  = async () => {
+    try{
+      await googleSignIn();
+    }
+    catch(error){
+      console.log( error);
+    }
+  };
+
+  useEffect(() => {
+    if(user != null) {
+      navigate('/home');
+    }
+  }, [user]);
 
   return (
     <div className="flex flex-wrap min-h-screen bg-gradient-to-br from-purple-100 to-pink-200">
@@ -72,7 +86,7 @@ function Signup() {
           </div>
           <div className="flex justify-center mt-4">
             <button
-              onClick={googleSignup}
+              onClick={handleGoogleSignIn}
               className="w-full py-3 px-4 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 rounded-md shadow-md flex items-center justify-center space-x-3 transition duration-300"
             >
               <img

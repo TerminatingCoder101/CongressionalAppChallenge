@@ -4,12 +4,21 @@ import { Link } from "react-router-dom";
 import GoogleLogo from '../assets/GoogleLogo.webp';
 import HomeLogo from '../assets/HomeLogo.png';
 import LoginImage from '../assets/LoginImage.jpg';
+import { UserAuth } from '../context/AuthContext';
 
 function Login() {
-  const googleLogin = useGoogleLogin({
-    onSuccess: (response) => console.log("Login Success:", response),
-    onError: (error) => console.log("Login Failed:", error),
-  });
+
+{/* Create Login with Google Feature, these are placeholders for now, they do not work properly*/}
+  const { googleSignIn } = UserAuth();
+
+  const  handleGoogleSignIn  = async () => {
+    try{
+      await googleSignIn();
+    }
+    catch(error){
+      console.log( error);
+    }
+  };
 
   return (
     <div className="flex flex-wrap min-h-screen bg-gradient-to-br from-purple-100 to-pink-200">
@@ -71,8 +80,9 @@ function Login() {
             <span className="text-gray-500">────────── or ──────────</span>
           </div>
           <div className="flex justify-center mt-4">
+            {/* Change the onClick Attribute as well when we get the Login with Google Feature working*/}
             <button
-              onClick={googleLogin}
+              onClick={googleSignIn} 
               className="w-full py-3 px-4 bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 rounded-md shadow-md flex items-center justify-center space-x-3 transition duration-300"
             >
               <img
