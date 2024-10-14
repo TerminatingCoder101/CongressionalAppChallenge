@@ -1,5 +1,4 @@
 import React, { useEffect} from "react";
-import { useGoogleLogin } from "@react-oauth/google";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleLogo from '../assets/GoogleLogo.webp';
 import HomeLogo from '../assets/HomeLogo.png';
@@ -21,7 +20,7 @@ function Signup() {
 
   useEffect(() => {
     if(user != null) {
-      navigate('/home');
+      navigate('/dashboard');
     }
   }, [user]);
 

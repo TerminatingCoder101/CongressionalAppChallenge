@@ -4,7 +4,8 @@ import {
   signInWithPopup, 
   signInWithRedirct,
   signOut,
-  onAuthStateChanged 
+  onAuthStateChanged,
+  updateProfile, 
 } from "firebase/auth";
 import { auth } from '../firebase';
 
