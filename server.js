@@ -4,13 +4,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = 8000; // You can change the port if needed
+const port = 8000;
 
-// Middleware
-app.use(cors()); // Enable CORS for all origins
-app.use(express.json()); // To parse incoming JSON payloads
+app.use(cors());
+app.use(express.json());
 
-// Route to search for clinics near a given latitude and longitude
 app.get('/api/clinics', async (req, res) => {
   const { lat, lon } = req.query;
 
@@ -20,8 +18,8 @@ app.get('/api/clinics', async (req, res) => {
 
   try {
     const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-    const radius = 10000; // Search radius in meters (e.g., 10km)
-    const type = 'hospital'; // We are assuming clinics, hospitals, and health centers are similar in this case
+    const radius = 10000;
+    const type = 'hospital';
 
     const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lon}&radius=${radius}&type=${type}&key=${apiKey}`;
 
@@ -36,7 +34,6 @@ app.get('/api/clinics', async (req, res) => {
   }
 });
 
-// Route to get clinic details using the place_id
 app.get('/api/clinic-details', async (req, res) => {
   const { placeId } = req.query;
 
@@ -59,7 +56,6 @@ app.get('/api/clinic-details', async (req, res) => {
   }
 });
 
-// Route to geocode ZIP code using Nominatim (optional for ZIP code searches)
 app.get('/api/geocode', async (req, res) => {
   const { zipCode } = req.query;
 

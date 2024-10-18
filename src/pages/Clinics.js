@@ -11,14 +11,12 @@ const Clinics = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Function to search clinics by ZIP code (existing)
   const handleSearch = async () => {
     setLoading(true);
     setError(null);
     setClinics([]);
 
     try {
-      // Step 1: Get coordinates from ZIP code using Nominatim API
       const geocodeUrl = `https://nominatim.openstreetmap.org/search?postalcode=${zipCode}&country=us&format=json`;
       const geocodeResponse = await axios.get(geocodeUrl);
 
@@ -31,7 +29,6 @@ const Clinics = () => {
       const { lat, lon } = geocodeResponse.data[0];
       console.log(`Coordinates for ZIP code ${zipCode}: ${lat}, ${lon}`);
 
-      // Step 2: Use backend to proxy Google Places API request
       const placesUrl = `http://localhost:8000/api/clinics?lat=${lat}&lon=${lon}`;
       const placesResponse = await axios.get(placesUrl);
 
@@ -45,7 +42,6 @@ const Clinics = () => {
         placesResponse.data.results.map(async (clinic) => {
           const placeId = clinic.place_id;
 
-          // Step 3: Fetch additional details from backend
           const detailsUrl = `http://localhost:8000/api/clinic-details?placeId=${placeId}`;
           const detailsResponse = await axios.get(detailsUrl);
 
@@ -70,7 +66,6 @@ const Clinics = () => {
     }
   };
 
-  // Function to search clinics near the user's current location (new)
   const handleSearchNearMe = async () => {
     setLoading(true);
     setError(null);
@@ -101,7 +96,6 @@ const Clinics = () => {
             placesResponse.data.results.map(async (clinic) => {
               const placeId = clinic.place_id;
 
-              // Fetch additional details from backend
               const detailsUrl = `http://localhost:8000/api/clinic-details?placeId=${placeId}`;
               const detailsResponse = await axios.get(detailsUrl);
 
