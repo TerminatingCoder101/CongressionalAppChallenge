@@ -26,7 +26,7 @@ function App() {
         <Route path="/clinics" element={<Protected> <Clinics/> </Protected>} />
         <Route path="/appointments" element={<Protected> <Appointments/> </Protected>} />
         <Route path="/messages" element={<Protected> <Messages/> </Protected>} />
-        <Route path="/diagnosis" element={<Protected> <Diagnosis/> </Protected>} />
+        <Route path="/medications" element={<Protected> <Diagnosis/> </Protected>} />
         <Route path="/documents" element={<Protected> <Documents/> </Protected>} />
         <Route path="/settings" element={<Protected> <Settings/> </Protected>} />
         {/* Add more routes here for other pages */}
