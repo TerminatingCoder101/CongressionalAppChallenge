@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
+import Graph from '../assets/graph.png';
+import Clinic from '../assets/clinic.avif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card, CardContent, CardHeader, CardTitle } from "../components/Home/card";
 import { Brain, Users } from "lucide-react";
@@ -131,20 +133,24 @@ const Home = () => {
                         <div className="col-span-2 bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                             {/* Chart Placeholder */}
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">Patient Status</h3>
-                            <div className="h-56 bg-gray-200 rounded-lg flex justify-center items-center">
-                                <p className="text-gray-500">Chart goes here</p>
+                            <div className="h-56 rounded-lg flex justify-center items-center">
+                                <img
+                                    src={Graph}
+                                    alt="Home Logo"
+                                    className="mt-36"
+                                />
                             </div>
                         </div>
                         <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">Clinic of the Week</h3>
                             <div className="text-center">
                                 <img
-                                    src="https://via.placeholder.com/120"
-                                    alt="Image"
+                                    src={Clinic}
+                                    alt="graph"
                                     className="mx-auto rounded-full mb-4 border-4 border-gray-200"
                                 />
-                                <p className="text-xl font-bold text-gray-800">Clinic Name</p>
-                                <p className="text-gray-600">Clinic Location</p>
+                                <p className="text-xl font-bold text-gray-800">St Joseph Hospital Outpatient</p>
+                                <p className="text-gray-600">Orange, California</p>
                                 <div className="mt-4">
                                     <p className="text-sm text-gray-600">Experience: 21 Years</p>
                                     <p className="text-sm text-gray-600">Patients: 5,352</p>
