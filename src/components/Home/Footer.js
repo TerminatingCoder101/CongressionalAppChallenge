@@ -53,10 +53,10 @@ function Footer() {
                       Names
                     </h1>
                     <ul className={`flex flex-col gap-3`}>
-                      <li className="cursor-pointer">Nitesh</li>
-                      <li className="cursor-pointer">Krish</li>
-                      <li className="cursor-pointer">Ryan</li>
-                      <li className="cursor-pointer">Sagar</li>
+                      <li className="cursor-pointer">Nitesh K.</li>
+                      <li className="cursor-pointer">Krish P.</li>
+                      <li className="cursor-pointer">Ryan S.</li>
+                      <li className="cursor-pointer">Sagar S.</li>
                     </ul>
                   </div>
                 </div>
@@ -66,10 +66,10 @@ function Footer() {
                       Contacts
                     </h1>
                     <ul className="flex flex-col gap-3">
-                      <li className="cursor-pointer">Nitesh</li>
-                      <li className="cursor-pointer">Krish</li>
-                      <li className="cursor-pointer">Ryan</li>
-                      <li className="cursor-pointer">Sagar</li>
+                      <li className="cursor-pointer">+1 (510) 268-3200</li>
+                      <li className="cursor-pointer">+1 (909) 621-2218</li>
+                      <li className="cursor-pointer">+1 (818) 956-0977</li>
+                      <li className="cursor-pointer">+1 (888) 999-2836</li>
                     </ul>
                   </div>
                 </div>
@@ -79,10 +79,10 @@ function Footer() {
                       Email Us
                     </h1>
                     <ul className="flex flex-col gap-3">
-                      <li className="cursor-pointer">Nitesh</li>
-                      <li className="cursor-pointer">Krish</li>
-                      <li className="cursor-pointer">Ryan</li>
-                      <li className="cursor-pointer">Sagar</li>
+                      <li className="cursor-pointer">K.nitesh@gmail.com</li>
+                      <li className="cursor-pointer">P.krish@gmail.com</li>
+                      <li className="cursor-pointer">S.ryan@gmail.com</li>
+                      <li className="cursor-pointer">S.sagar@gmail.com</li>
                     </ul>
                   </div>
                 </div>

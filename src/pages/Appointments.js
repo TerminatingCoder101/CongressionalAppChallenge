@@ -6,8 +6,8 @@ import { faTachometerAlt, faUserMd, faUsers, faEnvelope, faPills, faFileAlt, faC
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([
-    { id: 1, date: 'April 20, 2024', time: '10:00 AM', doctor: 'Dr. Smith', location: 'Clinic A' },
-    { id: 2, date: 'May 5, 2024', time: '1:00 PM', doctor: 'Dr. Johnson', location: 'Clinic B' },
+    { id: 1, date: 'April 20, 2024', time: '10:00 AM', doctor: 'Dr. Smith', location: 'Orange, California' },
+    { id: 2, date: 'May 5, 2024', time: '1:00 PM', doctor: 'Dr. Johnson', location: 'Frisco, Texas' },
   ]);
 
   const [newAppointment, setNewAppointment] = useState({ date: '', time: '', doctor: '', location: '' });

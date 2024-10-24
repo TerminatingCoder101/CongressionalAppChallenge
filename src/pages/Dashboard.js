@@ -166,8 +166,12 @@ const Home = () => {
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">Upcoming Appointments</h3>
                             <ul className="space-y-4">
                                 <li className="flex justify-between">
-                                    <p className="text-gray-700">Clinic Name - Location</p>
-                                    <p className="text-gray-500">April 30th, 2024 - 9 AM</p>
+                                    <p className="text-gray-700">Dr. Smith - Orange, California</p>
+                                    <p className="text-gray-500">April 20, 2024 - 10 AM</p>
+                                </li>
+                                <li className="flex justify-between">
+                                    <p className="text-gray-700">Dr. Johnson - Frisco, Texas</p>
+                                    <p className="text-gray-500">May 5, 2024 - 1 PM</p>
                                 </li>
                                 {/* Add more appointments as needed */}
                             </ul>
