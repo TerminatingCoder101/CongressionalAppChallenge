@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faUserMd, faUsers, faEnvelope, faPills, faFileAlt, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CognitiveTest = () => {
-    const [questions, setQuestions] = useState({
+    const [questions] = useState({
         question1: 'What is the date today (from memory) Day____ Month____ Year',
         question2: 'How many nickels are in 60 cents?',
         question3: 'You are buying $13.45 worth of groceries. How much in change do you receive back from a $20 bill?',
@@ -33,14 +33,6 @@ const CognitiveTest = () => {
 
     const [score] = useState(null);
     const [gptDiagnosis, setGptDiagnosis] = useState('');
-
-    useEffect(() => {
-        const fetchQuestions = async () => {
-            const response = await axios.get('http://localhost:8000/api/test');  // Update to your backend API route
-            setQuestions(response.data);
-        };
-        fetchQuestions();
-    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
