@@ -10,7 +10,7 @@ const CognitiveTest = () => {
         question1: 'What is the date today (from memory) Day____ Month____ Year',
         question2: 'How many nickels are in 60 cents?',
         question3: 'You are buying $13.45 worth of groceries. How much in change do you receive back from a $20 bill?',
-        question4: 'On the last question of the test, write "I am done.',
+        question4: 'If 3 apples can be picked in 5 minutes, how many can be picked in 1 hour?',
         question5: 'Do you have trouble making decisions even for everyday things such as what to eat, clothes to wear, making plans with family/friends, what to read?',
         question6: 'Do you have trouble focusing or concentrating while watching TV, playing on your phone/tablet, or listening to music?',
         question7: 'Do you forget the names of familiar objects and use general phrases such as "you know what I mean" or "that thing"?',
@@ -114,7 +114,7 @@ const CognitiveTest = () => {
                     <h2 className="font-semibold">{questions.question1}</h2>
                     <input
                         type="text"
-                        placeholder=" Day/Month/Year"
+                        placeholder="Month/Day/Year"
                         onChange={(e) => setAnswers({ ...answers, question1Answer: e.target.value.split(',') })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
@@ -147,7 +147,7 @@ const CognitiveTest = () => {
                     {<h2 className="font-semibold">{questions.question4}</h2>}
                     <input
                         type="text"
-                        placeholder="Never, Always, or Sometimes"
+                        placeholder="Enter number here."
                         onChange={(e) => setAnswers({ ...answers, question4Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
@@ -158,7 +158,7 @@ const CognitiveTest = () => {
                     {<h2 className="font-semibold">{questions.question5}</h2>}
                     <input
                         type="text"
-                        placeholder="Your answer"
+                        placeholder="Never, Always, Sometimes"
                         onChange={(e) => setAnswers({ ...answers, question5Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
@@ -169,7 +169,7 @@ const CognitiveTest = () => {
                     {<h2 className="font-semibold">{questions.question6}</h2>}
                     <input
                         type="text"
-                        placeholder="Your answer"
+                        placeholder="Never, Always, Sometimes"
                         onChange={(e) => setAnswers({ ...answers, question6: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
@@ -180,7 +180,7 @@ const CognitiveTest = () => {
                     {<h2 className="font-semibold">{questions.question7}</h2>}
                     <input
                         type="text"
-                        placeholder="Your answer"
+                        placeholder="Never, Always, Sometimes"
                         onChange={(e) => setAnswers({ ...answers, question7Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
@@ -191,7 +191,7 @@ const CognitiveTest = () => {
                     <h2 className="font-semibold">{questions.question8}</h2>
                     <input
                         type="text"
-                        placeholder="Never, Always, or Sometimes"
+                        placeholder="Enter number here."
                         onChange={(e) => setAnswers({ 
                             ...answers, 
                             additionalAnswers: { ...answers.additionalAnswers, question8Answer: e.target.value } 
@@ -204,7 +204,7 @@ const CognitiveTest = () => {
                     <h2 className="font-semibold">{questions.question9}</h2>
                     <input
                         type="text"
-                        placeholder="Your answer"
+                        placeholder="Never, Always, Sometimes"
                         onChange={(e) => setAnswers({ 
                             ...answers, 
                             additionalAnswers: { ...answers.additionalAnswers, Question9Answer: e.target.value } 
@@ -217,7 +217,7 @@ const CognitiveTest = () => {
                     <h2 className="font-semibold">{questions.question10}</h2>
                     <input
                         type="text"
-                        placeholder="Your answer"
+                        placeholder="List with comma"
                         onChange={(e) => setAnswers({ 
                             ...answers, 
                             additionalAnswers: { ...answers.additionalAnswers, Question10Answer: e.target.value } 
