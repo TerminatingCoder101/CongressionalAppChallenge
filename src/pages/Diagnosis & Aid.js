@@ -3,36 +3,40 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Card, CardContent, CardHeader, CardTitle } from "../components/Home/card";
-import { Brain, Users } from "lucide-react";
 import { faTachometerAlt, faUserMd, faUsers, faEnvelope, faPills, faFileAlt, faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CognitiveTest = () => {
-    const [questions, setQuestions] = useState({});
-    const [answers, setAnswers] = useState({ 
-        memoryAnswers: [], 
-        attentionAnswer: '', 
-        languageAnswer: '', 
-        problemSolvingAnswer: '', 
-        visualSpatialAnswer: '', 
-        logicalReasoningAnswer: '', 
-        mathSkillsAnswer: '',
-        additionalAnswers: {
-            Question11: '',
-            Question12: '',
-            Question13: '',
-            Question14: '',
-            Question15: '',
-            Question16: '',
-            Question17: '',
-            Question18: ''
-        }
+    const [questions, setQuestions] = useState({
+        question1: 'What is the date today (from memory) Day____ Month____ Year',
+        question2: 'How many nickels are in 60 cents?',
+        question3: 'You are buying $13.45 worth of groceries. How much in change do you receive back from a $20 bill?',
+        question4: 'On the last question of the test, write "I am done.',
+        question5: 'Do you have trouble making decisions even for everyday things such as what to eat, clothes to wear, making plans with family/friends, what to read?',
+        question6: 'Do you have trouble focusing or concentrating while watching TV, playing on your phone/tablet, or listening to music?',
+        question7: 'Do you forget the names of familiar objects and use general phrases such as "you know what I mean" or "that thing"?',
+        question8: 'How many quarters are in $10?',
+        question9: 'When talking, do you forget the point you are trying to make?',
+        question10: 'Write down the names of 5 US states.'
     });
-    const [score, setScore] = useState(null);
+    const [answers, setAnswers] = useState({ 
+        question1Answer: [], 
+        question2Answer: '', 
+        question3Answer: '', 
+        question4Answer: '', 
+        question5Answer: '', 
+        question6Answer: '', 
+        question7Answer: '',
+        question8Answer: '',
+        Question9Answer: '',
+        Question10Answer: ''
+    });
+
+    const [score] = useState(null);
+    const [gptDiagnosis, setGptDiagnosis] = useState('');
 
     useEffect(() => {
         const fetchQuestions = async () => {
-            const response = await axios.get('http://127.0.0.1:5000/api/test');
+            const response = await axios.get('http://localhost:8000/api/test');  // Update to your backend API route
             setQuestions(response.data);
         };
         fetchQuestions();
@@ -40,19 +44,16 @@ const CognitiveTest = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = await axios.post('http://127.0.0.1:5000/api/test/result', {
-            memory_answers: answers.memoryAnswers,
-            attention_answer: answers.attentionAnswer,
-            language_answer: answers.languageAnswer,
-            problem_solving_answer: answers.problemSolvingAnswer,
-            visual_spatial_answer: answers.visualSpatialAnswer,
-            logical_reasoning_answer: answers.logicalReasoningAnswer,
-            math_skills_answer: answers.mathSkillsAnswer,
-            additional_answers: answers.additionalAnswers
-        });
-        setScore(result.data);
-    };
 
+        try {
+            const gptResponse = await axios.post('http://localhost:8000/api/gpt', { answers });
+            setGptDiagnosis(gptResponse.data.diagnosis);  // Set the GPT diagnosis result
+        } catch (error) {
+            console.error('Error calling GPT diagnosis API:', error);
+            setGptDiagnosis('Error determining result');
+        }
+    };
+    
     const { user, logOut } = UserAuth();
 
     const handleLogout = async () => {
@@ -118,163 +119,116 @@ const CognitiveTest = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Memory Questions */}
                 <div>
-                    <h2 className="font-semibold">{questions.Memory?.short_term}</h2>
+                    <h2 className="font-semibold">{questions.question1}</h2>
                     <input
                         type="text"
                         placeholder=" Day/Month/Year"
-                        onChange={(e) => setAnswers({ ...answers, memoryAnswers: e.target.value.split(',') })}
+                        onChange={(e) => setAnswers({ ...answers, question1Answer: e.target.value.split(',') })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 {/* Attention Questions */}
                 <div>
-                    {questions.Attention && <h2 className="font-semibold">{questions.Attention.question}</h2>}
+                    {<h2 className="font-semibold">{questions.question2}</h2>}
                     <input
                         type="text"
                         placeholder="Your answer"
-                        onChange={(e) => setAnswers({ ...answers, attentionAnswer: e.target.value })}
+                        onChange={(e) => setAnswers({ ...answers, question2Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 {/* Language Questions */}
                 <div>
-                    {questions.Language && <h2 className="font-semibold">{questions.Language.question}</h2>}
+                    {<h2 className="font-semibold">{questions.question3}</h2>}
                     <input
                         type="text"
                         placeholder="Do not include the $ sign"
-                        onChange={(e) => setAnswers({ ...answers, languageAnswer: e.target.value })}
+                        onChange={(e) => setAnswers({ ...answers, question3Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
-                <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question15?.question}</h2>
-                </div>
-
-                <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question13?.question}</h2>
-                </div>
-
                 {/* Problem Solving Questions */}
                 <div>
-                    {questions.ProblemSolving && <h2 className="font-semibold">{questions.ProblemSolving.question}</h2>}
+                    {<h2 className="font-semibold">{questions.question4}</h2>}
                     <input
                         type="text"
                         placeholder="Never, Always, or Sometimes"
-                        onChange={(e) => setAnswers({ ...answers, problemSolvingAnswer: e.target.value })}
+                        onChange={(e) => setAnswers({ ...answers, question4Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 {/* Visual-Spatial Questions */}
                 <div>
-                    {questions.VisualSpatial && <h2 className="font-semibold">{questions.VisualSpatial.question}</h2>}
+                    {<h2 className="font-semibold">{questions.question5}</h2>}
                     <input
                         type="text"
                         placeholder="Your answer"
-                        onChange={(e) => setAnswers({ ...answers, visualSpatialAnswer: e.target.value })}
+                        onChange={(e) => setAnswers({ ...answers, question5Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 {/* Logical Reasoning Questions */}
                 <div>
-                    {questions.LogicalReasoning && <h2 className="font-semibold">{questions.LogicalReasoning.question}</h2>}
+                    {<h2 className="font-semibold">{questions.question6}</h2>}
                     <input
                         type="text"
                         placeholder="Your answer"
-                        onChange={(e) => setAnswers({ ...answers, logicalReasoningAnswer: e.target.value })}
+                        onChange={(e) => setAnswers({ ...answers, question6: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 {/* Math Skills Questions */}
                 <div>
-                    {questions.MathSkills && <h2 className="font-semibold">{questions.MathSkills.question}</h2>}
+                    {<h2 className="font-semibold">{questions.question7}</h2>}
                     <input
                         type="text"
                         placeholder="Your answer"
-                        onChange={(e) => setAnswers({ ...answers, mathSkillsAnswer: e.target.value })}
+                        onChange={(e) => setAnswers({ ...answers, question7Answer: e.target.value })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 {/* Additional Questions */}
                 <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question11?.question}</h2>
+                    <h2 className="font-semibold">{questions.question8}</h2>
                     <input
                         type="text"
                         placeholder="Never, Always, or Sometimes"
                         onChange={(e) => setAnswers({ 
                             ...answers, 
-                            additionalAnswers: { ...answers.additionalAnswers, Question11: e.target.value } 
+                            additionalAnswers: { ...answers.additionalAnswers, question8Answer: e.target.value } 
                         })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question12?.question}</h2>
+                    <h2 className="font-semibold">{questions.question9}</h2>
                     <input
                         type="text"
                         placeholder="Your answer"
                         onChange={(e) => setAnswers({ 
                             ...answers, 
-                            additionalAnswers: { ...answers.additionalAnswers, Question12: e.target.value } 
+                            additionalAnswers: { ...answers.additionalAnswers, Question9Answer: e.target.value } 
                         })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
                 </div>
 
                 <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question14?.question}</h2>
+                    <h2 className="font-semibold">{questions.question10}</h2>
                     <input
                         type="text"
                         placeholder="Your answer"
                         onChange={(e) => setAnswers({ 
                             ...answers, 
-                            additionalAnswers: { ...answers.additionalAnswers, Question14: e.target.value } 
-                        })}
-                        className="mt-2 p-2 border border-gray-300 rounded w-full"
-                    />
-                </div>
-
-                <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question16?.question}</h2>
-                    <input
-                        type="text"
-                        placeholder="Seperate by commas"
-                        onChange={(e) => setAnswers({ 
-                            ...answers, 
-                            additionalAnswers: { ...answers.additionalAnswers, Question16: e.target.value } 
-                        })}
-                        className="mt-2 p-2 border border-gray-300 rounded w-full"
-                    />
-                </div>
-
-                <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question17?.question}</h2>
-                    <input
-                        type="text"
-                        placeholder="Your answer"
-                        onChange={(e) => setAnswers({ 
-                            ...answers, 
-                            additionalAnswers: { ...answers.additionalAnswers, Question17: e.target.value } 
-                        })}
-                        className="mt-2 p-2 border border-gray-300 rounded w-full"
-                    />
-                </div>
-
-                <div>
-                    <h2 className="font-semibold">{questions.AdditionalQuestions?.Question18?.question}</h2>
-                    <input
-                        type="text"
-                        placeholder="Your answer"
-                        onChange={(e) => setAnswers({ 
-                            ...answers, 
-                            additionalAnswers: { ...answers.additionalAnswers, Question18: e.target.value } 
+                            additionalAnswers: { ...answers.additionalAnswers, Question10Answer: e.target.value } 
                         })}
                         className="mt-2 p-2 border border-gray-300 rounded w-full"
                     />
@@ -296,6 +250,13 @@ const CognitiveTest = () => {
                         ))}
                     </ul>
                     <p className="mt-2">Diagnosis: {score.diagnosis}</p>
+                </div>
+            )}
+
+            {gptDiagnosis && (
+                <div className="mt-6">
+                    <h2 className="text-lg font-semibold">GPT Diagnosis:</h2>
+                    <p>Your predicted diagnosis result is {gptDiagnosis}</p>
                 </div>
             )}
         </div>
