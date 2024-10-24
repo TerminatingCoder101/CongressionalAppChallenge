@@ -101,7 +101,7 @@ class CognitiveTestAI:
     def question_15(self):
         return {
             "question": "12. Please remember these words: 'paper, broccoli, knob'.",
-            "correct_answer": None  # Memorization task
+            "correct_answer": None
         }
 
     def question_16(self):
@@ -220,7 +220,6 @@ def submit_answers():
     total_score = sum(score for _, score in scores)
     diagnosis = cognitive_test_ai.generate_diagnosis(scores)
 
-    # Create a detailed results dictionary for additional questions
     additional_results = cognitive_test_ai.administer_additional_questions(additional_answers)
     additional_results_dict = {question: result for question, result in additional_results}
 
@@ -228,7 +227,7 @@ def submit_answers():
         "scores": scores,
         "total_score": total_score,
         "diagnosis": diagnosis,
-        "additional_results": additional_results_dict  # Include additional results
+        "additional_results": additional_results_dict
     }
 
     return jsonify(result)
