@@ -7,7 +7,7 @@ import { faTachometerAlt, faUserMd, faUsers, faEnvelope, faPills, faFileAlt, faC
 
 const CognitiveTest = () => {
     const [questions] = useState({
-        question1: 'What is the date today (from memory) Day____ Month____ Year',
+        question1: 'What is the date today (from memory) Month/Day/Year',
         question2: 'How many nickels are in 60 cents?',
         question3: 'You are buying $13.45 worth of groceries. How much in change do you receive back from a $20 bill?',
         question4: 'If 3 apples can be picked in 5 minutes, how many can be picked in 1 hour?',

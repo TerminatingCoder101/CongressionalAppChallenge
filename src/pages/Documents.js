@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UserAuth } from '../context/AuthContext';
 import { faTachometerAlt, faUserMd, faUsers, faEnvelope, faPills, faFileAlt, faCog, faSignOutAlt, faPrint } from '@fortawesome/free-solid-svg-icons';
 
-const Documents = () => {
+const Documents = ({document}) => {
   // sample data for now, we have to change after creating and updating everything by connecting to Diagnosis page to send reports here
-  const [documents] = useState([
+  const [documentsy] = useState([
     {
       id: 1,
       title: 'Blood Test Report',
@@ -51,7 +51,7 @@ const Documents = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-100 to-indigo-50">
+  <div className="min-h-screen flex flex-col bg-gradient-to-r from-blue-100 to-indigo-50">
   <div className="flex flex-grow">
     <aside className="w-1/5 bg-blue-950 text-white shadow-lg h-screen flex flex-col rounded-r-lg overflow-y-auto">
       <div className="p-6 flex-grow">
@@ -105,7 +105,7 @@ const Documents = () => {
 
             {/* Documents List */}
             <div className="grid grid-cols-1 gap-4">
-              {documents.map((document) => (
+              {documentsy.map((document, index) => (
                 <div key={document.id} className="p-4 bg-gray-100 rounded-lg shadow-md">
                   <div className="flex justify-between items-center mb-2">
                     <p className="text-lg font-semibold">{document.title}</p>

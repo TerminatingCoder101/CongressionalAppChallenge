@@ -167,11 +167,11 @@ const Home = () => {
                             <ul className="space-y-4">
                                 <li className="flex justify-between">
                                     <p className="text-gray-700">Dr. Smith - Orange, California</p>
-                                    <p className="text-gray-500">April 20, 2024 - 10 AM</p>
+                                    <p className="text-gray-500">October 31, 2024 - 10 AM</p>
                                 </li>
                                 <li className="flex justify-between">
-                                    <p className="text-gray-700">Dr. Johnson - Frisco, Texas</p>
-                                    <p className="text-gray-500">May 5, 2024 - 1 PM</p>
+                                    <p className="text-gray-700">Dr. Johnson - San Diego, California</p>
+                                    <p className="text-gray-500">December 15, 2024 - 1 PM</p>
                                 </li>
                                 {/* Add more appointments as needed */}
                             </ul>
@@ -180,7 +180,7 @@ const Home = () => {
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">Recent History</h3>
                             <ul className="space-y-4">
                                 <li className="flex justify-between">
-                                    <p className="text-gray-700">April 28th, 2024</p>
+                                    <p className="text-gray-700">September 25th, 2024</p>
                                     <p className="text-gray-500">Starting Symptoms of Dementia</p>
                                 </li>
                                 {/* Add more history as needed */}
